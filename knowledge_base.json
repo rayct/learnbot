@@ -3,6 +3,10 @@
     {
       "question": "Hello",
       "answer": "Hi"
+    },
+    {
+      "question": "Hi",
+      "answer": "Hello, how may I help you?"
     }
   ]
 }
