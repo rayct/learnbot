@@ -7,6 +7,10 @@
     {
       "question": "Hi",
       "answer": "Hello, how may I help you?"
+    },
+    {
+      "question": "What do you Scaffold hire rates start from?",
+      "answer": "This will depend upon various factors, can you provide me with some more information please?"
     }
   ]
 }
