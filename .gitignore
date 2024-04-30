@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# Mac files
+.DS_Store
+
 # Distribution / packaging
 .Python
 build/
@@ -120,6 +123,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+learnbot.venv
 .env
 .venv
 env/
