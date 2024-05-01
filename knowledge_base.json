@@ -11,6 +11,14 @@
     {
       "question": "What do you Scaffold hire rates start from?",
       "answer": "This will depend upon various factors, can you provide me with some more information please?"
+    },
+    {
+      "question": "hi",
+      "answer": "hi"
+    },
+    {
+      "question": "What is 3 * 5",
+      "answer": "3 * 5 is 15, Basically 3 multiplied by 5 = 15"
     }
   ]
 }
