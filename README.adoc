@@ -1,4 +1,4 @@
-= Python Selfearning Bot
+= Python Self learning Bot
 
 ---
 **Documentation By:** Raymond C. Turner
