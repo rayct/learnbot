@@ -19,6 +19,10 @@
     {
       "question": "What is 3 * 5",
       "answer": "3 * 5 is 15, Basically 3 multiplied by 5 = 15"
+    },
+    {
+      "question": "What are your prices",
+      "answer": "Prices start from \u00a3150 for an on-site quote and survey"
     }
   ]
 }
