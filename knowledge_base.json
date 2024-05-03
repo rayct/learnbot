@@ -23,6 +23,14 @@
     {
       "question": "What are your prices",
       "answer": "Prices start from \u00a3150 for an on-site quote and survey"
+    },
+    {
+      "question": "I need a quote for some scaffolding",
+      "answer": "Sure, can you privide me with some more details so I can assist you further?"
+    },
+    {
+      "question": "It's for an exstension on a bungalow",
+      "answer": "Ok! are you able to provide the size and area of the bungalow"
     }
   ]
 }
