@@ -1,7 +1,7 @@
 1. Contact JB for more user input for NLP
 2. Parse json to MySQL Database
-3. link the updated endpoint API to frontend
-4. Hook up to the Frontend Webservice 
+3. link the updated end point API to front end
+4. Hook up to the Front end Webservice 
 
 
 
