@@ -62,7 +62,6 @@ def find_best_match(user_input: str, questions: List[str]) -> Optional[str]:
 # Remaining functions remain unchanged
 
 
-
 def get_answer_for_question(question: str, knowledge_base: Dict[str, Any]) -> Optional[str]:
     for q in knowledge_base.get("questions", []):
         if q.get("question") == question:
@@ -94,15 +93,16 @@ def chat_bot():
             user_input: str = get_user_input()
 
             if user_input.lower() == 'quit':
-                logging.info("Chatbot session ended by user.")
+                logging.info("Chatbot session ended by Ray.")
+                print('\nBot: Goodbye!')
                 break
             elif user_input.lower() == 'reload':
                 knowledge_base = load_knowledge_base(knowledge_base_file)
                 print('Bot: Knowledge base reloaded.')
-                logging.info("Knowledge base reloaded by user.")
+                logging.info("Knowledge base reloaded by Ray.")
                 continue
             elif user_input.lower() == 'reboot':
-                logging.info("Chatbot reboot initiated by user.")
+                logging.info("Chatbot reboot initiated by Ray.")
                 reboot_logger.info("Reboot process started.")
                 try:
                     print('Bot: Rebooting...')
@@ -142,7 +142,7 @@ def chat_bot():
                     add_new_answer(knowledge_base, user_input, new_answer)
 
         except KeyboardInterrupt:
-            logging.info("Chatbot session interrupted by user.")
+            logging.info("Chatbot session interrupted by Ray.")
             print('\nBot: Goodbye!')
             break
         except Exception as e:

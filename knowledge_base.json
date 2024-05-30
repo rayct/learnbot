@@ -70,7 +70,15 @@
     },
     {
       "question": "scaffold duration",
-      "answer": "Scaffold duration depends on various factors such "
+      "answer": "Scaffold duration depends on various factors such as project the requirements"
+    },
+    {
+      "question": "quote",
+      "answer": "What are your requirements please so may assist you futher?"
+    },
+    {
+      "question": "Hello there",
+      "answer": "Hi, how may I help you?"
     }
   ]
 }
