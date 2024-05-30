@@ -79,6 +79,10 @@
     {
       "question": "Hello there",
       "answer": "Hi, how may I help you?"
+    },
+    {
+      "question": "qoutes",
+      "answer": "Yes I can provide quotes, can you provide some more information so I may assit you further?"
     }
   ]
 }
