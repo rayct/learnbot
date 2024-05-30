@@ -74,7 +74,7 @@
     },
     {
       "question": "quote",
-      "answer": "What are your requirements please so may assist you futher?"
+      "answer": "What are your requirements please so I can assist you futher?"
     },
     {
       "question": "Hello there",
@@ -82,7 +82,11 @@
     },
     {
       "question": "qoutes",
-      "answer": "Yes I can provide quotes, can you provide some more information so I may assit you further?"
+      "answer": "Yes I can provide quotes, can you provide some more information so I can assit you further?"
+    },
+    {
+      "question": "What sort of Information?",
+      "answer": "Like the area size of the property and possible duration of hire, all of which can be obtained by the on-ste contractor who will be carrying out the work! "
     }
   ]
 }
