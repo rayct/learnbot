@@ -18,6 +18,8 @@
 - Modified the reboot process to read the entire script content at once and execute it, avoiding syntax errors from partial code execution.
 - Ensured that the reboot process is properly logged and executed without encountering syntax errors due to incomplete code execution.
 
+## Added logging timestamps to UK/GB.
+
 ---
 
 ## Converted the logging timestamps to the UK/GB time zone in Python, you can use the pytz library to handle time zone conversions.
