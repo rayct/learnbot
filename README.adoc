@@ -1,9 +1,46 @@
 = Python Self learning Bot
 
+Key Additions:
+
+* Logging to text file
+* Clean exit logging
+* `Reload` feature
+* `Reboot` feature added
+* `Quit` feature added
+
+* Explanation of Logging Integration:
+
+* Logging Configuration:
+    * logging.basicConfig is used to configure the logging settings, specifying the log file name, log level, format, and date format.
+
+* Logging Messages:
+    * Info Level:
+        * Successfully loading the knowledge base.
+        * Successfully saving the knowledge base.
+        * Finding the best match for the user question.
+        * Adding a new answer to the knowledge base.
+        * Responding with an answer.
+    * Error Level:
+        * Errors while loading or saving the knowledge base.
+    * Warning Level:
+        * No answer found for the matched question.
+        * No match found for the user question.
+    * Session End:
+        * Logging when the user ends the chatbot session.
+
+* Try-Except in get_user_input: The get_user_input function is wrapped in a try-except block to catch KeyboardInterrupt and log it.
+
+* Try-Except in chat_bot Loop: The main loop in chat_bot is wrapped in a try-except block to catch KeyboardInterrupt and log it, allowing the program to exit gracefully.
+
+* Top-Level Try-Except: The top-level execution of chat_bot is wrapped in a try-except block to catch any other unexpected exceptions and log them as critical errors.
+
+* Chatbot will now support reloading the knowledge base on-the-fly by typing `reload`, in addition to handling exits and logging various actions and errors.
+
 ---
+
 **Documentation By:** Raymond C. Turner
 
-**Revision:** May 3rd, 2024
+**Revision:** May 30th, 2024
 
 
 **codestak.io**

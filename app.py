@@ -1,30 +1,69 @@
 import json
+import logging
+import sys
+import spacy
+from typing import Optional, List, Dict, Any
 from difflib import get_close_matches
-from typing import Optional, List
 
-def load_knowledge_base(file_path: str) -> dict:
+# Load spaCy model
+nlp = spacy.load("en_core_web_md")
+
+# Configure general logging to existing log file
+logging.basicConfig(
+    filename='chatbot.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+# Configure reboot logging to existing log file
+reboot_logger = logging.getLogger('reboot_logger')
+reboot_handler = logging.FileHandler('chatbot.log')  # Using the same log file as general logging
+reboot_handler.setLevel(logging.INFO)
+reboot_handler.setFormatter(logging.Formatter('%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S'))
+reboot_logger.addHandler(reboot_handler)
+
+
+def load_knowledge_base(file_path: str) -> Dict[str, Any]:
     try:
         with open(file_path, 'r') as file:
-            data: dict = json.load(file)
+            data: Dict[str, Any] = json.load(file)
+        logging.info("Knowledge base loaded successfully.")
         return data
     except FileNotFoundError:
-        print(f"Error: Knowledge base file '{file_path}' not found.")
+        logging.error(f"Knowledge base file '{file_path}' not found.")
         return {}
     except json.JSONDecodeError as e:
-        print(f"Error decoding JSON in file '{file_path}': {e}")
+        logging.error(f"Error decoding JSON in file '{file_path}': {e}")
         return {}
 
-def save_knowledge_base(file_path: str, data: dict):
-    with open(file_path, 'w') as file:
-        json.dump(data, file, indent=2)
+
+def save_knowledge_base(file_path: str, data: Dict[str, Any]):
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=2)
+        logging.info("Knowledge base saved successfully.")
+    except Exception as e:
+        logging.error(f"Error saving knowledge base to '{file_path}': {e}")
 
 
-def find_best_match(user_question: str, questions: List[str]) -> Optional[str]:
-    matches: List[str] = get_close_matches(user_question, questions, n=1, cutoff=0.6)
-    return matches[0] if matches else None
+def find_best_match(user_input: str, questions: List[str]) -> Optional[str]:
+    best_match = None
+    max_similarity = 0.0
+    for question in questions:
+        similarity = nlp(user_input).similarity(nlp(question))
+        if similarity > max_similarity:
+            max_similarity = similarity
+            best_match = question
+    logging.info(f"Best match for user input '{user_input}' is '{best_match}' with similarity {max_similarity}.")
+    return best_match if max_similarity > 0.6 else None
 
 
-def get_answer_for_question(question: str, knowledge_base: dict) -> Optional[str]:
+# Remaining functions remain unchanged
+
+
+
+def get_answer_for_question(question: str, knowledge_base: Dict[str, Any]) -> Optional[str]:
     for q in knowledge_base.get("questions", []):
         if q.get("question") == question:
             return q.get("answer")
@@ -32,41 +71,88 @@ def get_answer_for_question(question: str, knowledge_base: dict) -> Optional[str
 
 
 def get_user_input() -> str:
-    return input('You: ')
+    try:
+        return input('You: ')
+    except KeyboardInterrupt:
+        logging.info("User initiated exit.")
+        raise
 
 
-def add_new_answer(knowledge_base: dict, user_input: str, new_answer: str):
-    knowledge_base.setdefault("questions", []).append({"question": user_input, "answer": new_answer})
+def add_new_answer(knowledge_base: Dict[str, Any], user_question: str, new_answer: str):
+    knowledge_base.setdefault("questions", []).append({"question": user_question, "answer": new_answer})
     save_knowledge_base('knowledge_base.json', knowledge_base)
+    logging.info(f"New answer added for question '{user_question}'.")
     print('Bot: Thank you! I learned a new response!')
 
 
 def chat_bot():
-    knowledge_base: dict = load_knowledge_base('knowledge_base.json')
+    knowledge_base_file = 'knowledge_base.json'
+    knowledge_base: Dict[str, Any] = load_knowledge_base(knowledge_base_file)
 
     while True:
-        user_input: str = get_user_input()
+        try:
+            user_input: str = get_user_input()
 
-        if user_input.lower() == 'quit':
-            break
+            if user_input.lower() == 'quit':
+                logging.info("Chatbot session ended by user.")
+                break
+            elif user_input.lower() == 'reload':
+                knowledge_base = load_knowledge_base(knowledge_base_file)
+                print('Bot: Knowledge base reloaded.')
+                logging.info("Knowledge base reloaded by user.")
+                continue
+            elif user_input.lower() == 'reboot':
+                logging.info("Chatbot reboot initiated by user.")
+                reboot_logger.info("Reboot process started.")
+                try:
+                    print('Bot: Rebooting...')
+                    reboot_logger.info("Rebooting the chatbot program.")
 
-        best_match: Optional[str] = find_best_match(user_input, [q.get("question", "") for q in knowledge_base.get("questions", [])])
+                    # Open the current script and read it all at once
+                    with open(sys.argv[0], 'r') as script_file:
+                        script_content = script_file.read()
+                        reboot_logger.info(script_content)
+                        exec(script_content)
 
-        if best_match:
-            answer: Optional[str] = get_answer_for_question(best_match, knowledge_base)
-            if answer:
-                print(f'Bot: {answer}')
+                    reboot_logger.info("Chatbot reboot completed successfully.")
+                except Exception as e:
+                    reboot_logger.error(f"Error during reboot: {e}")
+                    print('Bot: An error occurred during reboot.')
+                break
+
+            questions_list = [q.get("question", "") for q in knowledge_base.get("questions", [])]
+            best_match: Optional[str] = find_best_match(user_input, questions_list)
+
+            if best_match:
+                answer: Optional[str] = get_answer_for_question(best_match, knowledge_base)
+                if answer:
+                    logging.info(f"Responding to question '{best_match}' with answer '{answer}'.")
+                    print(f'Bot: {answer}')
+                else:
+                    logging.warning(f"No answer found for the matched question '{best_match}'.")
+                    print('Bot: Sorry, I don\'t know the answer. Can you please educate me?')
+                    new_answer: str = input('Type the answer or "skip" to skip: ')
+                    if new_answer.lower() != 'skip':
+                        add_new_answer(knowledge_base, user_input, new_answer)
             else:
+                logging.warning(f"No match found for the user question '{user_input}'.")
                 print('Bot: Sorry, I don\'t know the answer. Can you please educate me?')
                 new_answer: str = input('Type the answer or "skip" to skip: ')
                 if new_answer.lower() != 'skip':
                     add_new_answer(knowledge_base, user_input, new_answer)
-        else:
-            print('Bot: Sorry, I don\'t know the answer. Can you please educate me?')
-            new_answer: str = input('Type the answer or "skip" to skip: ')
-            if new_answer.lower() != 'skip':
-                add_new_answer(knowledge_base, user_input, new_answer)
+
+        except KeyboardInterrupt:
+            logging.info("Chatbot session interrupted by user.")
+            print('\nBot: Goodbye!')
+            break
+        except Exception as e:
+            logging.error(f"Unexpected error: {e}")
+            print('Bot: An unexpected error occurred. Please try again.')
 
 
 if __name__ == '__main__':
-    chat_bot()
+    try:
+        chat_bot()
+    except Exception as e:
+        logging.critical(f"Critical error in main execution: {e}")
+        print('Bot: A critical error occurred. Exiting...')

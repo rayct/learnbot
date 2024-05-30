@@ -9,7 +9,7 @@
       "answer": "Hello, how may I help you?"
     },
     {
-      "question": "What do you Scaffold hire rates start from?",
+      "question": "What do your Scaffold hire rates start from?",
       "answer": "This will depend upon various factors, can you provide me with some more information please?"
     },
     {
@@ -31,6 +31,46 @@
     {
       "question": "It's for an exstension on a bungalow",
       "answer": "Ok! are you able to provide the size and area of the bungalow"
+    },
+    {
+      "question": "Scaffold hire prices",
+      "answer": "Sure, Our prices depend on the type of scaffolding you require, you can contact us via email info@tailoredscaffolding.co.uk or phone on 08878026349 for a moe detailed quote"
+    },
+    {
+      "question": "How are you?",
+      "answer": "I'm very well thank you for asking, how are you today?"
+    },
+    {
+      "question": "I doing great",
+      "answer": "I'm so glad to hear that you are doing great!"
+    },
+    {
+      "question": "Can you tell jokes?",
+      "answer": "Sure, Why don't scientists trust atoms? Because they make up everything!"
+    },
+    {
+      "question": "Tell me another one",
+      "answer": "OK, Why did the scarecrow win an award? Because he was outstanding in his field!"
+    },
+    {
+      "question": "Anymore Jokes",
+      "answer": "Absolutely, Why did the bicycle fall over? Because it was two-tired!"
+    },
+    {
+      "question": "Are you an accredited installer?",
+      "answer": "Yes we are, our scaffolders each hold there own accreditation's such as the CISRS, CSCS and CHAS registered. "
+    },
+    {
+      "question": "prices",
+      "answer": "Our prices vary depending on the scale of the job."
+    },
+    {
+      "question": "I need scaffolding for a roofing project can you help?",
+      "answer": "Sure, I can assist you with that. Could you provide me with some more information regarding the height and size of the building? For example, is it a house or a bungalow? How many levels does the building have, and for how long do you require the scaffold?"
+    },
+    {
+      "question": "scaffold duration",
+      "answer": "Scaffold duration depends on various factors such "
     }
   ]
 }
