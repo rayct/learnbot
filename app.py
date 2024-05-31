@@ -19,7 +19,7 @@ class UKFormatter(logging.Formatter):
         if datefmt:
             s = dt.strftime(datefmt)
         else:
-            s = dt.strftime("%Y-%m-%d %H:%M:%S")
+            s = dt.strftime("%d-%m-%Y %H:%M:%S")
         return s
 
 # Configure general logging to existing log file

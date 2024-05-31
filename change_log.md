@@ -20,6 +20,86 @@
 
 ## Added logging timestamps to UK/GB.
 
+## Reversed the format from %Y-%m-%d (which represents YYYY-MM-DD) to %d-%m-%Y (which represents DD-MM-YYYY)
+
+---
+
+## Custom logging `Formatter` class, `UKFormatter`, is designed to convert timestamps to the London timezone and format the time in a specific way. Here's a review and some improvements to ensure clarity and correctness:
+
+1. **Imports**: Ensure all necessary modules are imported.
+2. **Use of Timezone**: The `timezone` function from the `pytz` module should be correctly imported and utilized.
+3. **Handling Edge Cases**: Include handling for edge cases and errors.
+
+Revised version of `UKFormatter` class:
+
+```python
+import logging
+from datetime import datetime
+import pytz
+
+class UKFormatter(logging.Formatter):
+    def converter(self, timestamp):
+        dt = datetime.fromtimestamp(timestamp, tz=pytz.UTC)
+        return dt.astimezone(pytz.timezone('Europe/London'))
+
+    def formatTime(self, record, datefmt=None):
+        dt = self.converter(record.created)
+        if datefmt:
+            s = dt.strftime(datefmt)
+        else:
+            s = dt.strftime("%d-%m-%Y %H:%M:%S")
+        return s
+
+# Example usage
+if __name__ == "__main__":
+    logger = logging.getLogger('example_logger')
+    handler = logging.StreamHandler()
+    handler.setFormatter(UKFormatter())
+    logger.addHandler(handler)
+    logger.setLevel(logging.DEBUG)
+
+    logger.info("This is a test log message.")
+```
+
+### Key Points:
+
+1. **Imports**: Ensure you import `pytz` for timezone conversions.
+   ```python
+   import pytz
+   ```
+
+2. **Converter Function**: The `converter` function converts the timestamp to UTC and then to the `Europe/London` timezone.
+   ```python
+   def converter(self, timestamp):
+       dt = datetime.fromtimestamp(timestamp, tz=pytz.UTC)
+       return dt.astimezone(pytz.timezone('Europe/London'))
+   ```
+
+3. **Formatting Time**: The `formatTime` function uses the converter and formats the time according to the specified or default format.
+   ```python
+   def formatTime(self, record, datefmt=None):
+       dt = self.converter(record.created)
+       if datefmt:
+           s = dt.strftime(datefmt)
+       else:
+           s = dt.strftime("%d-%m-%Y %H:%M:%S")
+       return s
+   ```
+
+4. **Example Usage**: Demonstrates how to set up the logger and use the custom formatter.
+   ```python
+   if __name__ == "__main__":
+       logger = logging.getLogger('example_logger')
+       handler = logging.StreamHandler()
+       handler.setFormatter(UKFormatter())
+       logger.addHandler(handler)
+       logger.setLevel(logging.DEBUG)
+
+       logger.info("This is a test log message.")
+   ```
+
+With this setup, any log messages created by `example_logger` will have their timestamps converted to the `Europe/London` timezone and formatted according to the specified or default format.
+
 ---
 
 ## Converted the logging timestamps to the UK/GB time zone in Python, you can use the pytz library to handle time zone conversions.
