@@ -169,6 +169,98 @@
         {
           "question": "What should I do if there is a problem with the scaffolding?",
           "answer": "If you encounter any issues with the scaffolding, please contact our customer support team immediately at +1-800-SCAFFOLD. We offer 24/7 support for emergency situations."
+        },
+        {
+        "question": "Hello",
+        "answer": "Hi"
+        },
+        {
+        "question": "Hi",
+        "answer": "Hello, how may I help you?"
+        },
+        {
+        "question": "What do your Scaffold hire rates start from?",
+        "answer": "This will depend upon various factors, can you provide me with some more information please?"
+        },
+        {
+        "question": "hi",
+        "answer": "hi"
+        },
+        {
+        "question": "What is 3 * 5",
+        "answer": "3 * 5 is 15, Basically 3 multiplied by 5 = 15"
+        },
+        {
+        "question": "What are your prices",
+        "answer": "Prices start from \u00a3150 for an on-site quote and survey"
+        },
+        {
+        "question": "I need a quote for some scaffolding",
+        "answer": "Sure, can you provide me with some more details so I can assist you further?"
+        },
+        {
+        "question": "It's for an extension on a bungalow",
+        "answer": "Ok! are you able to provide the size and area of the bungalow"
+        },
+        {
+        "question": "Scaffold hire prices",
+        "answer": "Sure, Our prices depend on the type of scaffolding you require, you can contact us via email info@tailoredscaffolding.co.uk or phone on 08878026349 for a more detailed quote"
+        },
+        {
+        "question": "How are you?",
+        "answer": "I'm very well thank you for asking, how are you today?"
+        },
+        {
+        "question": "I'm doing great",
+        "answer": "I'm so glad to hear that you are doing great!"
+        },
+        {
+        "question": "Can you tell jokes?",
+        "answer": "Sure, Why don't scientists trust atoms? Because they make up everything!"
+        },
+        {
+        "question": "Tell me another one",
+        "answer": "OK, Why did the scarecrow win an award? Because he was outstanding in his field!"
+        },
+        {
+        "question": "Any more jokes",
+        "answer": "Absolutely, Why did the bicycle fall over? Because it was two-tired!"
+        },
+        {
+        "question": "Are you an accredited installer?",
+        "answer": "Yes we are, our scaffolders each hold their own accreditations such as the CISRS, CSCS and CHAS registered."
+        },
+        {
+        "question": "prices",
+        "answer": "Our prices vary depending on the scale of the job."
+        },
+        {
+        "question": "I need scaffolding for a roofing project can you help?",
+        "answer": "Sure, I can assist you with that. Can you provide me with some more information regarding the height and size of the building? For example, is it a house, flat or a bungalow? How many levels does the building have, and for how long do you require the scaffold?"
+        },
+        {
+        "question": "scaffold duration",
+        "answer": "Scaffold duration depends on various factors such as project requirements."
+        },
+        {
+        "question": "quote",
+        "answer": "What are your requirements please so I can assist you further?"
+        },
+        {
+        "question": "Hello there",
+        "answer": "Hi, how may I help you?"
+        },
+        {
+        "question": "quotes",
+        "answer": "Yes I can provide quotes, can you provide some more information so I can assist you further?"
+        },
+        {
+        "question": "What sort of information?",
+        "answer": "Like the area size of the property and possible duration of hire, all of which can be obtained by the on-site contractor who will be carrying out the work!"
+        },
+        {
+        "question": "Hey",
+        "answer": "Hi"
         }
       ],
       "supportContact": {
