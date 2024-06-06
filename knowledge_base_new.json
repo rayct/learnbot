@@ -1,0 +1,181 @@
+{
+    "companyDetails": {
+      "name": "Tailored Scaffolding Hire",
+      "address": {
+        "street": "123 Scaffold Lane",
+        "city": "Buildtown",
+        "state": "Construct",
+        "zipCode": "98765",
+        "country": "United Kingdom"
+      },
+      "contact": {
+        "phone": "+1-800-SCAFFOLD",
+        "email": "info@tailoredscaffolding.com",
+        "website": "www.tailoredscaffolding.co.uk"
+      },
+      "hoursOfOperation": {
+        "monday": "8:00 AM - 5:00 PM",
+        "tuesday": "8:00 AM - 5:00 PM",
+        "wednesday": "8:00 AM - 5:00 PM",
+        "thursday": "8:00 AM - 5:00 PM",
+        "friday": "8:00 AM - 5:00 PM",
+        "saturday": "9:00 AM - 2:00 PM",
+        "sunday": "Closed"
+      }
+    },
+    "servicesOffered": {
+      "residentialScaffolding": {
+        "description": "Safe and reliable scaffolding solutions for residential projects.",
+        "priceRange": "$500 - $2000",
+        "duration": "1 - 3 weeks"
+      },
+      "commercialScaffolding": {
+        "description": "Comprehensive scaffolding services for commercial buildings.",
+        "priceRange": "$2000 - $10000",
+        "duration": "2 - 8 weeks"
+      },
+      "industrialScaffolding": {
+        "description": "Heavy-duty scaffolding for industrial sites and factories.",
+        "priceRange": "$5000 - $20000",
+        "duration": "4 - 12 weeks"
+      },
+      "scaffoldingDesignAndPlanning": {
+        "description": "Professional design and planning services to meet your project requirements.",
+        "priceRange": "$500 - $3000",
+        "duration": "1 - 2 weeks"
+      },
+      "scaffoldingInspectionAndMaintenance": {
+        "description": "Regular inspection and maintenance to ensure scaffolding safety and compliance.",
+        "priceRange": "$100 - $1000 per inspection",
+        "duration": "Varies"
+      }
+    },
+    "safetyProtocols": {
+      "generalSafety": [
+        "All personnel must wear appropriate PPE (Personal Protective Equipment).",
+        "Daily safety checks and site inspections are mandatory.",
+        "Scaffolding must be erected and dismantled by certified professionals."
+      ],
+      "workingAtHeights": [
+        "Use of guardrails and toe boards on all scaffolding.",
+        "Harnesses and fall arrest systems must be used at heights above 6 feet.",
+        "Regular training sessions on fall prevention and safety procedures."
+      ],
+      "materialHandling": [
+        "All materials must be properly secured and stored.",
+        "Use of cranes and hoists to lift heavy materials onto scaffolding.",
+        "Clear pathways to avoid tripping hazards."
+      ],
+      "emergencyProcedures": [
+        "Emergency contact numbers must be posted on site.",
+        "First aid kits must be readily available.",
+        "Evacuation routes and procedures must be clearly marked and communicated."
+      ]
+    },
+    "equipmentDetails": {
+      "typesOfScaffolding": [
+        {
+          "type": "Single Scaffolding",
+          "description": "Used for brick masonry, consists of standards, ledgers, and putlogs.",
+          "maxHeight": "30 meters"
+        },
+        {
+          "type": "Double Scaffolding",
+          "description": "Used for stone masonry, includes two rows for extra support.",
+          "maxHeight": "45 meters"
+        },
+        {
+          "type": "Cantilever Scaffolding",
+          "description": "Used when the ground does not support standards, supported by needles.",
+          "maxHeight": "20 meters"
+        },
+        {
+          "type": "Suspended Scaffolding",
+          "description": "Platform suspended by ropes or chains, used for maintenance work.",
+          "maxHeight": "60 meters"
+        },
+        {
+          "type": "Trestle Scaffolding",
+          "description": "Working platform supported by movable ladders, used for indoor work.",
+          "maxHeight": "5 meters"
+        }
+      ],
+      "accessories": [
+        {
+          "name": "Scaffold Planks",
+          "description": "Wooden or metal planks used to create working platforms.",
+          "dimensions": "2.5m x 0.5m"
+        },
+        {
+          "name": "Guardrails",
+          "description": "Rails installed along the edges of scaffolding to prevent falls.",
+          "material": "Steel"
+        },
+        {
+          "name": "Toe Boards",
+          "description": "Boards placed at the edge of platforms to prevent materials from falling.",
+          "material": "Wood or metal"
+        },
+        {
+          "name": "Base Plates",
+          "description": "Plates placed under standards to distribute weight and provide stability.",
+          "dimensions": "150mm x 150mm"
+        },
+        {
+          "name": "Couplers",
+          "description": "Fittings used to connect scaffolding tubes together.",
+          "types": ["Right Angle Couplers", "Swivel Couplers", "Putlog Couplers"]
+        }
+      ]
+    },
+    "customerSupport": {
+      "faq": [
+        {
+          "question": "How do I get a quote for scaffolding services?",
+          "answer": "You can request a quote by filling out the form on our website or by contacting our customer service team at +1-800-SCAFFOLD."
+        },
+        {
+          "question": "What safety measures are in place for scaffolding?",
+          "answer": "We adhere to strict safety protocols including daily inspections, use of PPE, and compliance with OSHA regulations."
+        },
+        {
+          "question": "Can I modify the scaffolding once it's installed?",
+          "answer": "No, any modifications should be carried out by our certified professionals to ensure safety and compliance."
+        },
+        {
+          "question": "How long can I hire the scaffolding for?",
+          "answer": "The hire duration can vary based on the project requirements. We offer flexible hire periods ranging from a few days to several months."
+        },
+        {
+          "question": "What is included in the scaffolding hire service?",
+          "answer": "Our scaffolding hire service includes delivery, erection, regular inspections, and dismantling of the scaffolding. Additional services such as design and maintenance can also be provided."
+        },
+        {
+          "question": "Do you provide training for working with scaffolding?",
+          "answer": "Yes, we offer comprehensive training sessions for working safely with scaffolding, including fall prevention, PPE usage, and emergency procedures."
+        },
+        {
+          "question": "What types of payment do you accept?",
+          "answer": "We accept various payment methods including credit cards, bank transfers, and checks. For large projects, we also offer installment plans."
+        },
+        {
+          "question": "How quickly can you set up the scaffolding after I place an order?",
+          "answer": "Setup time depends on the project size and complexity, but we typically begin setup within 3-5 business days after the order is placed."
+        },
+        {
+          "question": "Do you offer any discounts for long-term hires or large projects?",
+          "answer": "Yes, we offer discounts for long-term hires and large projects. Please contact our sales team for more details on our discount policies."
+        },
+        {
+          "question": "What should I do if there is a problem with the scaffolding?",
+          "answer": "If you encounter any issues with the scaffolding, please contact our customer support team immediately at +1-800-SCAFFOLD. We offer 24/7 support for emergency situations."
+        }
+      ],
+      "supportContact": {
+        "phone": "+1-800-SCAFFOLD",
+        "email": "support@topscaff.com",
+        "liveChat": "Available on our website during business hours."
+      }
+    }
+  }
+  
