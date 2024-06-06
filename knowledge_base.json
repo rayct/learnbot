@@ -26,22 +26,22 @@
     },
     {
       "question": "I need a quote for some scaffolding",
-      "answer": "Sure, can you privide me with some more details so I can assist you further?"
+      "answer": "Sure, can you provide me with some more details so I can assist you further?"
     },
     {
-      "question": "It's for an exstension on a bungalow",
+      "question": "It's for an extension on a bungalow",
       "answer": "Ok! are you able to provide the size and area of the bungalow"
     },
     {
       "question": "Scaffold hire prices",
-      "answer": "Sure, Our prices depend on the type of scaffolding you require, you can contact us via email info@tailoredscaffolding.co.uk or phone on 08878026349 for a moe detailed quote"
+      "answer": "Sure, Our prices depend on the type of scaffolding you require, you can contact us via email info@tailoredscaffolding.co.uk or phone on 08878026349 for a more detailed quote"
     },
     {
       "question": "How are you?",
       "answer": "I'm very well thank you for asking, how are you today?"
     },
     {
-      "question": "I doing great",
+      "question": "I'm doing great",
       "answer": "I'm so glad to hear that you are doing great!"
     },
     {
@@ -53,12 +53,12 @@
       "answer": "OK, Why did the scarecrow win an award? Because he was outstanding in his field!"
     },
     {
-      "question": "Anymore Jokes",
+      "question": "Any more jokes",
       "answer": "Absolutely, Why did the bicycle fall over? Because it was two-tired!"
     },
     {
       "question": "Are you an accredited installer?",
-      "answer": "Yes we are, our scaffolders each hold there own accreditation's such as the CISRS, CSCS and CHAS registered. "
+      "answer": "Yes we are, our scaffolders each hold their own accreditations such as the CISRS, CSCS and CHAS registered."
     },
     {
       "question": "prices",
@@ -70,27 +70,69 @@
     },
     {
       "question": "scaffold duration",
-      "answer": "Scaffold duration depends on various factors such as project the requirements"
+      "answer": "Scaffold duration depends on various factors such as project requirements."
     },
     {
       "question": "quote",
-      "answer": "What are your requirements please so I can assist you futher?"
+      "answer": "What are your requirements please so I can assist you further?"
     },
     {
       "question": "Hello there",
       "answer": "Hi, how may I help you?"
     },
     {
-      "question": "qoutes",
-      "answer": "Yes I can provide quotes, can you provide some more information so I can assit you further?"
+      "question": "quotes",
+      "answer": "Yes I can provide quotes, can you provide some more information so I can assist you further?"
     },
     {
-      "question": "What sort of Information?",
-      "answer": "Like the area size of the property and possible duration of hire, all of which can be obtained by the on-ste contractor who will be carrying out the work! "
+      "question": "What sort of information?",
+      "answer": "Like the area size of the property and possible duration of hire, all of which can be obtained by the on-site contractor who will be carrying out the work!"
     },
     {
       "question": "Hey",
       "answer": "Hi"
+    },
+    {
+      "question": "I have a bungalow, I'm having a loft extension fitted!",
+      "answer": {
+        "message": "Thank you for reaching out to us regarding your loft extension project on your bungalow. We’re excited to help you with your scaffolding needs! For a loft extension, we typically provide a scaffold setup that ensures safety and efficiency for both your builders and the overall project. Here’s what we propose:",
+        "proposals": [
+          {
+            "step": "Initial Site Visit",
+            "description": "We’ll conduct an on-site survey to assess the specific requirements of your property and the extension project."
+          },
+          {
+            "step": "Custom Scaffold Design",
+            "description": "Based on the survey, we’ll design a scaffold structure tailored to your bungalow’s dimensions and the loft extension plans."
+          },
+          {
+            "step": "Scaffold Installation",
+            "description": "Our experienced team will install the scaffold, ensuring it meets all safety standards and regulations."
+          },
+          {
+            "step": "Ongoing Support",
+            "description": "Throughout the duration of your project, we offer maintenance and adjustments to the scaffold as needed."
+        }
+        ],
+        "requestDetails": {
+          "message": "To proceed, could you please provide us with a few details?",
+          "details": [
+            "The exact location of your bungalow.",
+            "The anticipated start date of the loft extension.",
+            "Any specific requirements or constraints we should be aware of."
+          ]
+        },
+        "nextSteps": {
+          "message": "Once we have this information, we can provide you with a detailed quote and timeline. Feel free to contact us if you have any questions or need further assistance.",
+          "contactInformation": {
+            "contactName": "[Your Name]",
+            "companyName": "[Your Company Name]",
+            "contactDetails": "[Contact Information]",
+            "websiteURL": "[Website URL]"
+          }
+        },
+        "closingMessage": "We look forward to assisting you with your project!"
+      }
     }
   ]
 }
