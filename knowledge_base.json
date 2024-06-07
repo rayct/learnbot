@@ -110,9 +110,14 @@
     {
       "question": "Ongoing Support",
       "answer": "Throughout the duration of your project, we offer maintenance and adjustments to the scaffold as needed."
+<<<<<<< HEAD
     }
         ],
         "requestDetails": {
+=======
+    },
+      "requestDetails": {
+>>>>>>> 01b73d0 (Chatbot Knowledge Update)
           "message": "To proceed, could you please provide us with a few details?",
           "details": [
             "The exact location of your bungalow.",
