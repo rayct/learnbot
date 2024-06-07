@@ -94,11 +94,11 @@
     },
     {
       "question": "I have a bungalow, I'm having a loft extension fitted!",
-      "answer": "Thank you for reaching out to us regarding your loft extension project on your bungalow. We’re excited to help you with your scaffolding needs! For a loft extension, we typically provide a scaffold setup that ensures safety and efficiency for both your builders and the overall project. Here’s what we propose:",
+      "answer": "Thank you for reaching out to us regarding your loft extension project on your bungalow. We’re excited to help you with your scaffolding needs! For a loft extension, we typically provide a scaffold setup that ensures safety and efficiency for both your builders and the overall project. Here’s what we propose:"
     },
     {
       "question": "What are your proposals and what the initial steps involved in scaffold hire", 
-      "answer": "The Initial Site Visit, will invole us conducting an on-site survey to assess the specific requirements of your property and the extension project.",
+      "answer": "The Initial Site Visit, will invole us conducting an on-site survey to assess the specific requirements of your property and the extension project."
     },
       "question": "Custom Scaffold Design",
       "answer": "Based on the survey, we’ll design a scaffold structure tailored to your bungalow’s dimensions and the loft extension plans."
@@ -110,7 +110,7 @@
     {
       "question": "Ongoing Support",
       "answer": "Throughout the duration of your project, we offer maintenance and adjustments to the scaffold as needed."
-  }
+    }
         ],
         "requestDetails": {
           "message": "To proceed, could you please provide us with a few details?",
