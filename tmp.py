@@ -5,20 +5,14 @@ import enchant
 import os
 from datetime import datetime
 
-# Function to write log messages to a file with timestamps and line numbers
-def write_log(message, line_number=None):
+# Function to write log messages to a file with timestamps
+def write_log(message):
     log_file_path = 'json_duplicates.log'
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(log_file_path, 'a') as log_file:
-        if line_number is not None:
-            log_file.write(f"{timestamp} - Line {line_number}: {message}\n")
-        else:
-            log_file.write(f"{timestamp} - {message}\n")
-    # Print the message to the terminal with timestamp and line number
-    if line_number is not None:
-        print(f"{timestamp} - Line {line_number}: {message}")
-    else:
-        print(f"{timestamp} - {message}")
+        log_file.write(f"{timestamp} - {message}\n")
+    # Print the message to the terminal with timestamp
+    print(f"{timestamp} - {message}")
 
 # Log a message to indicate the script start
 write_log("Script started.")
@@ -62,10 +56,10 @@ write_log("Checking for duplicate questions...")
 unique_questions = set()
 duplicate_questions = set()
 
-for line_number, question in enumerate(questions, start=1):
+for question in questions:
     matches = tool.check(question)
     if matches or not spell_checker.check(question):
-        write_log(f"Potential error found in question: {question}", line_number)
+        write_log(f"Potential error found in question: {question}")
     if question in unique_questions:
         duplicate_questions.add(question)
     else:
@@ -77,7 +71,7 @@ write_log("Checking for duplicate answers...")
 unique_answers = set()
 duplicate_answers = set()
 
-for line_number, answer in enumerate(answers, start=1):
+for answer in answers:
     if answer in unique_answers:
         duplicate_answers.add(answer)
     else:
