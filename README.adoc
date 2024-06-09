@@ -51,6 +51,7 @@ Once the program is running, follow the on-screen prompts to interact with the c
 - Python 3.x
 - spaCy
 - Enchant
+- logging
 
 Install the required dependencies using pip:
 
