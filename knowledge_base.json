@@ -175,7 +175,12 @@
     {
       "question": "What are your contact details please",
       "answer": "Our contact details are as follows\nPhone: 07972 612 395\nEmail: info@tailoredscaffolding.com\nWebsite: www.tailoredscaffolding.co.uk"
+    },
+    {
+      "question": "company Details"
+      "answer": "Name: Tailored Scaffolding Hire\nAddress:\n123 Scaffold Lane\nCity: South London\nThamesmead\n
+        "zipCode": "98765",
+        "country": "United Kingdom"
     }
-    
   ]
 }
