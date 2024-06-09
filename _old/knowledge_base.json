@@ -223,10 +223,7 @@
     {
       "question": "What scaffolding accessories do you offer?",
       "answer": "Scaffold Planks: Wooden or metal planks used to create working platforms.\nDimensions: 2.5m x 0.5m\n\nGuardrails: Rails installed along the edges of scaffolding to prevent falls.\nMaterial: Steel\n\nToe Boards: Boards placed at the edge of platforms to prevent materials from falling.\nMaterial: Wood or metal\n\nBase Plates: Plates placed under standards to distribute weight and provide stability.\nDimensions: 150mm x 150mm\n\nCouplers: Fittings used to connect scaffolding tubes together.\nTypes: Right Angle Couplers, Swivel Couplers, Putlog Couplers"
-    },
-    {
-      "question": "clear",
-      "answer": ""
     }
+    
   ]
 }

@@ -1,46 +1,74 @@
-= Python Self learning Bot
+= Chatbot Program
 
-Key Additions:
+This is a simple chatbot program written in Python. The chatbot is designed to interact with users, answer questions, and learn new responses based on user input. It includes features such as logging, knowledge base management, grammar and spell checking, and more.
 
-* Logging to text file
-* Clean exit logging
-* `Reload` feature
-* `Reboot` feature added
-* `Quit` feature added
+== Features
 
-* Explanation of Logging Integration:
+=== 1. Chatbot Interaction
 
-* Logging Configuration:
-    * logging.basicConfig is used to configure the logging settings, specifying the log file name, log level, format, and date format.
+- The chatbot interacts with users through a command line interface.
+- Users can ask questions or provide input, and the chatbot responds accordingly.
+- The chatbot uses natural language processing (NLP) to understand user input and find the best match in its knowledge base.
 
-* Logging Messages:
-    * Info Level:
-        * Successfully loading the knowledge base.
-        * Successfully saving the knowledge base.
-        * Finding the best match for the user question.
-        * Adding a new answer to the knowledge base.
-        * Responding with an answer.
-    * Error Level:
-        * Errors while loading or saving the knowledge base.
-    * Warning Level:
-        * No answer found for the matched question.
-        * No match found for the user question.
-    * Session End:
-        * Logging when the user ends the chatbot session.
+=== 2. Knowledge Base Management
 
-* Try-Except in get_user_input: The get_user_input function is wrapped in a try-except block to catch KeyboardInterrupt and log it.
+- The chatbot stores its knowledge base in a JSON file (`knowledge_base.json`).
+- Users can reload the knowledge base, add new questions and answers, and save the updated knowledge base.
 
-* Try-Except in chat_bot Loop: The main loop in chat_bot is wrapped in a try-except block to catch KeyboardInterrupt and log it, allowing the program to exit gracefully.
+=== 3. Logging
 
-* Top-Level Try-Except: The top-level execution of chat_bot is wrapped in a try-except block to catch any other unexpected exceptions and log them as critical errors.
+- The chatbot logs interactions and errors to a text file (`chatbot.log`).
+- Log entries include timestamps, log levels (INFO, WARNING, ERROR, CRITICAL), and messages.
 
-* Chatbot will now support reloading the knowledge base on-the-fly by typing `reload`, in addition to handling exits and logging various actions and errors.
+=== 4. Rebooting
+
+- Users can initiate a reboot of the chatbot program.
+- During a reboot, the chatbot logs the reboot process and reloads the script.
+
+=== 5. Grammar and Spell Checking
+
+- The chatbot performs grammar and spell checking on user input and responses.
+- It uses the Enchant library to check for spelling errors and suggest corrections.
+
+=== 6. Clearing the Log File
+
+- Users can clear the log file by typing `clear log` in the command line interface.
+- This feature helps maintain log files and keep them from growing too large.
+
+== Usage
+
+To run the chatbot program, execute the `chatbot.py` script:
+
+[source,bash]
+----
+python chatbot.py
+----
+
+Once the program is running, follow the on-screen prompts to interact with the chatbot.
+
+== Dependencies
+
+- Python 3.x
+- spaCy
+- Enchant
+
+Install the required dependencies using pip:
+
+[source,bash]
+----
+pip install spacy
+pip install pyenchant
+----
+
+== License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
 ---
 
 **Documentation By:** Raymond C. Turner
 
-**Revision:** April 8th, 2024
-
+**Revision:** April 9th, 2024
 
 **codestak.io**

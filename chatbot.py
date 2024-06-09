@@ -1,112 +1,3 @@
-# Change Log
-
-## [Added] Enhanced Matching Algorithm using spaCy
-
-- Integrated spaCy library for more sophisticated matching algorithm.
-- Installed spaCy and downloaded English language model.
-- Used spaCy to compute similarity between user input and existing questions in the knowledge base.
-- Replaced the `find_best_match` function with a new implementation that uses spaCy for similarity comparison.
-- Improved accuracy of matching based on semantic similarity.
-
-## [Changed] Logging Configuration
-
-- Configured additional file handler for the existing `reboot_logger` to write log messages to the same log file (`chatbot.log`) as the general logging.
-- All log messages, including those from the reboot process, are now written to the same log file.
-
-## [Fixed] Reboot Process Error Handling
-
-- Modified the reboot process to read the entire script content at once and execute it, avoiding syntax errors from partial code execution.
-- Ensured that the reboot process is properly logged and executed without encountering syntax errors due to incomplete code execution.
-
-## Added logging timestamps to UK/GB.
-
-## Reversed the format from %Y-%m-%d (which represents YYYY-MM-DD) to %d-%m-%Y (which represents DD-MM-YYYY)
-
----
-
-## Custom logging `Formatter` class, `UKFormatter`, is designed to convert timestamps to the London timezone and format the time in a specific way. Here's a review and some improvements to ensure clarity and correctness:
-
-1. **Imports**: Ensure all necessary modules are imported.
-2. **Use of Timezone**: The `timezone` function from the `pytz` module should be correctly imported and utilized.
-3. **Handling Edge Cases**: Include handling for edge cases and errors.
-
-Revised version of `UKFormatter` class:
-
-```python
-import logging
-from datetime import datetime
-import pytz
-
-class UKFormatter(logging.Formatter):
-    def converter(self, timestamp):
-        dt = datetime.fromtimestamp(timestamp, tz=pytz.UTC)
-        return dt.astimezone(pytz.timezone('Europe/London'))
-
-    def formatTime(self, record, datefmt=None):
-        dt = self.converter(record.created)
-        if datefmt:
-            s = dt.strftime(datefmt)
-        else:
-            s = dt.strftime("%d-%m-%Y %H:%M:%S")
-        return s
-
-# Example usage
-if __name__ == "__main__":
-    logger = logging.getLogger('example_logger')
-    handler = logging.StreamHandler()
-    handler.setFormatter(UKFormatter())
-    logger.addHandler(handler)
-    logger.setLevel(logging.DEBUG)
-
-    logger.info("This is a test log message.")
-```
-
-### Key Points:
-
-1. **Imports**: Ensure you import `pytz` for timezone conversions.
-   ```python
-   import pytz
-   ```
-
-2. **Converter Function**: The `converter` function converts the timestamp to UTC and then to the `Europe/London` timezone.
-   ```python
-   def converter(self, timestamp):
-       dt = datetime.fromtimestamp(timestamp, tz=pytz.UTC)
-       return dt.astimezone(pytz.timezone('Europe/London'))
-   ```
-
-3. **Formatting Time**: The `formatTime` function uses the converter and formats the time according to the specified or default format.
-   ```python
-   def formatTime(self, record, datefmt=None):
-       dt = self.converter(record.created)
-       if datefmt:
-           s = dt.strftime(datefmt)
-       else:
-           s = dt.strftime("%d-%m-%Y %H:%M:%S")
-       return s
-   ```
-
-4. **Example Usage**: Demonstrates how to set up the logger and use the custom formatter.
-   ```python
-   if __name__ == "__main__":
-       logger = logging.getLogger('example_logger')
-       handler = logging.StreamHandler()
-       handler.setFormatter(UKFormatter())
-       logger.addHandler(handler)
-       logger.setLevel(logging.DEBUG)
-
-       logger.info("This is a test log message.")
-   ```
-
-With this setup, any log messages created by `example_logger` will have their timestamps converted to the `Europe/London` timezone and formatted according to the specified or default format.
-
----
-
-## Converted the logging timestamps to the UK/GB time zone in Python, you can use the pytz library to handle time zone conversions.
-
-To ensure that the timestamps in your logging output are in the UK/GB time zone, you can use a custom formatter as previously described. This custom formatter will convert timestamps to the UK time zone before logging them. Here's how you can integrate this into your `app.py` script:
-
-```python
 import json
 import logging
 import sys
@@ -128,7 +19,7 @@ class UKFormatter(logging.Formatter):
         if datefmt:
             s = dt.strftime(datefmt)
         else:
-            s = dt.strftime("%Y-%m-%d %H:%M:%S")
+            s = dt.strftime("%d-%m-%Y %H:%M:%S")
         return s
 
 # Configure general logging to existing log file
@@ -173,11 +64,24 @@ def save_knowledge_base(file_path: str, data: Dict[str, Any]):
 def find_best_match(user_input: str, questions: List[str]) -> Optional[str]:
     best_match = None
     max_similarity = 0.0
+    user_doc = nlp(user_input)
+    
+    if not user_doc.vector_norm:  # Check if the user input vector is not empty
+        logging.warning(f"User input '{user_input}' resulted in an empty vector.")
+        return None
+
     for question in questions:
-        similarity = nlp(user_input).similarity(nlp(question))
+        question_doc = nlp(question)
+        
+        if not question_doc.vector_norm:  # Check if the question vector is not empty
+            logging.warning(f"Question '{question}' resulted in an empty vector.")
+            continue
+        
+        similarity = user_doc.similarity(question_doc)
         if similarity > max_similarity:
             max_similarity = similarity
             best_match = question
+    
     logging.info(f"Best match for user input '{user_input}' is '{best_match}' with similarity {max_similarity}.")
     return best_match if max_similarity > 0.6 else None
 
@@ -200,6 +104,15 @@ def add_new_answer(knowledge_base: Dict[str, Any], user_question: str, new_answe
     logging.info(f"New answer added for question '{user_question}'.")
     print('Bot: Thank you! I learned a new response!')
 
+def clear_log():
+    try:
+        open('chatbot.log', 'w').close()
+        logging.info("Log file cleared successfully.")
+        print('Log file cleared successfully.')
+    except Exception as e:
+        logging.error(f"Error clearing log file: {e}")
+        print('Error clearing log file.')
+
 def chat_bot():
     knowledge_base_file = 'knowledge_base.json'
     knowledge_base: Dict[str, Any] = load_knowledge_base(knowledge_base_file)
@@ -209,6 +122,10 @@ def chat_bot():
             user_input: str = get_user_input()
 
             if user_input.lower() == 'quit':
+                logging.info("Chatbot session ended by Ray.")
+                print('\nBot: Goodbye!')
+                break
+            elif user_input.lower() == 'exit':
                 logging.info("Chatbot session ended by Ray.")
                 print('\nBot: Goodbye!')
                 break
@@ -235,6 +152,9 @@ def chat_bot():
                     reboot_logger.error(f"Error during reboot: {e}")
                     print('Bot: An error occurred during reboot.')
                 break
+            elif user_input.lower() == 'clear log':
+                clear_log()
+                continue
 
             questions_list = [q.get("question", "") for q in knowledge_base.get("questions", [])]
             best_match: Optional[str] = find_best_match(user_input, questions_list)
@@ -271,31 +191,4 @@ if __name__ == '__main__':
     except Exception as e:
         logging.critical(f"Critical error in main execution: {e}")
         print('Bot: A critical error occurred. Exiting...')
-```
 
-In this updated `app.py` script:
-
-1. The `UKFormatter` class is used to format timestamps in the UK time zone.
-2. `general_formatter` is an instance of `UKFormatter` used in the root logger's configuration.
-3. The `reboot_logger` also uses an instance of `UKFormatter`.
-
-*This ensures that all log entries in `chatbot.log` have their timestamps converted to the UK time zone.*
-
-5. Grammar and Spell Checking
-
-- The chatbot performs grammar and spell checking on user input and responses.
-- It uses the Enchant library to check for spelling errors and suggest corrections.
-
-6. Clearing the Log File
-
-- Users can clear the log file by typing `clear log` in the command line interface.
-- This feature helps maintain log files and keep them from growing too large.
-
-
----
-
-**Documentation By:** Raymond C. Turner
-
-**Revision:** April 9th, 2024
-
-**codestak.io**

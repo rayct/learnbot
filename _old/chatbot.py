@@ -116,6 +116,10 @@ def chat_bot():
                 logging.info("Chatbot session ended by Ray.")
                 print('\nBot: Goodbye!')
                 break
+            elif user_input.lower() == 'exit':
+                logging.info("Chatbot session ended by Ray.")
+                print('\nBot: Goodbye!')
+                break
             elif user_input.lower() == 'reload':
                 knowledge_base = load_knowledge_base(knowledge_base_file)
                 print('Bot: Knowledge base reloaded.')
