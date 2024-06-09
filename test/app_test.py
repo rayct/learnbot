@@ -1,6 +1,7 @@
 import json
 import logging
 import sys
+import pytz
 import spacy
 from typing import Optional, List, Dict, Any
 from datetime import datetime
@@ -11,8 +12,8 @@ nlp = spacy.load("en_core_web_md")
 
 class UKFormatter(logging.Formatter):
     def converter(self, timestamp):
-        dt = datetime.fromtimestamp(timestamp, tz=UTC)
-        return dt.astimezone(timezone('Europe/London'))
+        dt = datetime.fromtimestamp(timestamp, tz=pytz.UTC)
+        return dt.astimezone(pytz.timezone('Europe/London'))
 
     def formatTime(self, record, datefmt=None):
         dt = self.converter(record.created)
@@ -104,15 +105,6 @@ def add_new_answer(knowledge_base: Dict[str, Any], user_question: str, new_answe
     logging.info(f"New answer added for question '{user_question}'.")
     print('Bot: Thank you! I learned a new response!')
 
-def clear_log():
-    try:
-        open('chatbot.log', 'w').close()
-        logging.info("Log file cleared successfully.")
-        print('Log file cleared successfully.')
-    except Exception as e:
-        logging.error(f"Error clearing log file: {e}")
-        print('Error clearing log file.')
-
 def chat_bot():
     knowledge_base_file = 'knowledge_base.json'
     knowledge_base: Dict[str, Any] = load_knowledge_base(knowledge_base_file)
@@ -122,10 +114,6 @@ def chat_bot():
             user_input: str = get_user_input()
 
             if user_input.lower() == 'quit':
-                logging.info("Chatbot session ended by Ray.")
-                print('\nBot: Goodbye!')
-                break
-            elif user_input.lower() == 'exit':
                 logging.info("Chatbot session ended by Ray.")
                 print('\nBot: Goodbye!')
                 break
@@ -152,9 +140,6 @@ def chat_bot():
                     reboot_logger.error(f"Error during reboot: {e}")
                     print('Bot: An error occurred during reboot.')
                 break
-            elif user_input.lower() == 'clear log':
-                clear_log()
-                continue
 
             questions_list = [q.get("question", "") for q in knowledge_base.get("questions", [])]
             best_match: Optional[str] = find_best_match(user_input, questions_list)
@@ -191,4 +176,3 @@ if __name__ == '__main__':
     except Exception as e:
         logging.critical(f"Critical error in main execution: {e}")
         print('Bot: A critical error occurred. Exiting...')
-
