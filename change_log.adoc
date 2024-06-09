@@ -1,0 +1,27 @@
+= Change Log
+
+== Version 1.0.0 (09-06-2024)
+
+* Added script to prompt user to clear a specified log file.
+* Included line numbers in log messages.
+* Improved logging functionality to include timestamps.
+* Modified the script to output running processes to the terminal.
+* Added functionality to leave a copy of the log after successfully deleting it.
+* Fixed issue where log file was not being created.
+* Added diagnostic messages to indicate script progress.
+* Integrated terminal output alongside log file.
+* Added functionality to clear the contents of a specified log file.
+
+== Version 0.1.0 (YYYY-MM-DD)
+
+* Initial version of the script.
+
+
+
+---
+
+**Documentation By:** Raymond C. Turner
+
+**Revision:** April 9th, 2024
+
+**codestak.io**
