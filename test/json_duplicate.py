@@ -7,7 +7,7 @@ from datetime import datetime
 
 # Function to write log messages to a file with timestamps and line numbers
 def write_log(message, line_number=None):
-    log_file_path = '/logs/json_duplicates.log'
+    log_file_path = 'json_duplicates.log'
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     with open(log_file_path, 'a') as log_file:
         if line_number is not None:
