@@ -177,10 +177,53 @@
       "answer": "Our contact details are as follows\nPhone: 07972 612 395\nEmail: info@tailoredscaffolding.com\nWebsite: www.tailoredscaffolding.co.uk"
     },
     {
-      "question": "company Details"
-      "answer": "Name: Tailored Scaffolding Hire\nAddress:\n123 Scaffold Lane\nCity: South London\nThamesmead\n
-        "zipCode": "98765",
-        "country": "United Kingdom"
+      "question": "company Details",
+      "answer": "Name: Tailored Scaffolding Hire\nAddress:\nAlee Road\nCity: South London\nThamesmead\nPost Code: SE28 8DW\nCountry: United Kingdom"
+    },
+    {
+      "question": "What services do you offer for residential scaffolding?",
+      "answer": "Safe and reliable scaffolding solutions for residential projects.\nPrice Range: $500 - $2000\nDuration: 1 - 3 weeks"
+    },
+    {
+      "question": "What services do you offer for commercial scaffolding?",
+      "answer": "Comprehensive scaffolding services for commercial buildings.\nPrice Range: $2000 - $10000\nDuration: 2 - 8 weeks"
+    },
+    {
+      "question": "What services do you offer for industrial scaffolding?",
+      "answer": "Heavy-duty scaffolding for industrial sites and factories.\nPrice Range: $5000 - $20000\nDuration: 4 - 12 weeks"
+    },
+    {
+      "question": "What services do you offer for scaffolding design and planning?",
+      "answer": "Professional design and planning services to meet your project requirements.\nPrice Range: $500 - $3000\nDuration: 1 - 2 weeks"
+    },
+    {
+      "question": "What services do you offer for scaffolding inspection and maintenance?",
+      "answer": "Regular inspection and maintenance to ensure scaffolding safety and compliance.\nPrice Range: $100 - $1000 per inspection\nDuration: Varies"
+    },
+    {
+      "question": "What are your general safety protocols?",
+      "answer": "All personnel must wear appropriate PPE (Personal Protective Equipment).\nDaily safety checks and site inspections are mandatory.\nScaffolding must be erected and dismantled by certified professionals."
+    },
+    {
+      "question": "What are your safety protocols for working at heights?",
+      "answer": "Use of guardrails and toe boards on all scaffolding.\nHarnesses and fall arrest systems must be used at heights above 6 feet.\nRegular training sessions on fall prevention and safety procedures."
+    },
+    {
+      "question": "What are your safety protocols for material handling?",
+      "answer": "All materials must be properly secured and stored.\nUse of cranes and hoists to lift heavy materials onto scaffolding.\nClear pathways to avoid tripping hazards."
+    },
+    {
+      "question": "What are your emergency procedures?",
+      "answer": "Emergency contact numbers must be posted on site.\nFirst aid kits must be readily available.\nEvacuation routes and procedures must be clearly marked and communicated."
+    },
+    {
+      "question": "What types of scaffolding do you offer?",
+      "answer": "Single Scaffolding: Used for brick masonry, consists of standards, ledgers, and putlogs.\nMax Height: 30 meters\n\nDouble Scaffolding: Used for stone masonry, includes two rows for extra support.\nMax Height: 45 meters\n\nCantilever Scaffolding: Used when the ground does not support standards, supported by needles.\nMax Height: 20 meters\n\nSuspended Scaffolding: Platform suspended by ropes or chains, used for maintenance work.\nMax Height: 60 meters\n\nTrestle Scaffolding: Working platform supported by movable ladders, used for indoor work.\nMax Height: 5 meters"
+    },
+    {
+      "question": "What scaffolding accessories do you offer?",
+      "answer": "Scaffold Planks: Wooden or metal planks used to create working platforms.\nDimensions: 2.5m x 0.5m\n\nGuardrails: Rails installed along the edges of scaffolding to prevent falls.\nMaterial: Steel\n\nToe Boards: Boards placed at the edge of platforms to prevent materials from falling.\nMaterial: Wood or metal\n\nBase Plates: Plates placed under standards to distribute weight and provide stability.\nDimensions: 150mm x 150mm\n\nCouplers: Fittings used to connect scaffolding tubes together.\nTypes: Right Angle Couplers, Swivel Couplers, Putlog Couplers"
     }
+    
   ]
 }
