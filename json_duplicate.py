@@ -1,26 +1,52 @@
 import json
 import logging
+import sys
 from language_tool_python import LanguageTool
 import enchant
+import os
 
+# Get the absolute path of the current directory
+current_directory = os.path.abspath(os.path.dirname(__file__))
+
+# Specify the absolute path for the log file
+log_file_path = os.path.join(current_directory, 'json_duplicates.log')
+
+# Configure logging with the absolute file path
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(message)s')
+
+# Rest of the script remains the same...
 # Configure logging
-logging.basicConfig(filename='json_duplicates.log', level=logging.INFO, format='%(asctime)s - %(message)s')
-
-# Load JSON data
-with open('knowledge_base.json', 'r') as file:
-    data = json.load(file)
+# logging.basicConfig(filename='json_duplicates.log', level=logging.INFO, format='%(asctime)s - %(message)s')
+# Configure logging to print to console
+# logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(asctime)s - %(message)s')
+try:
+    # Load JSON data
+    print("Loading JSON data...")
+    with open('knowledge_base.json', 'r') as file:
+        data = json.load(file)
+    print("JSON data loaded successfully.")
+except FileNotFoundError:
+    logging.error("File 'knowledge_base.json' not found. Please check the file path.")
+    raise
 
 # Initialize language tool for grammar checking
+print("Initializing language tool...")
 tool = LanguageTool('en-US')
+print("Language tool initialized.")
 
 # Initialize enchant for spell checking
+print("Initializing spell checker...")
 spell_checker = enchant.Dict("en_US")
+print("Spell checker initialized.")
 
 # Extract questions and answers
+print("Extracting questions and answers...")
 questions = [item['question'] for item in data['questions']]
 answers = [item['answer'] for item in data['questions']]
+print("Questions and answers extracted successfully.")
 
 # Check for duplicate questions
+print("Checking for duplicate questions...")
 unique_questions = set()
 duplicate_questions = set()
 
@@ -32,8 +58,10 @@ for question in questions:
         duplicate_questions.add(question)
     else:
         unique_questions.add(question)
+print("Duplicate questions check complete.")
 
 # Check for duplicate answers
+print("Checking for duplicate answers...")
 unique_answers = set()
 duplicate_answers = set()
 
@@ -42,6 +70,7 @@ for answer in answers:
         duplicate_answers.add(answer)
     else:
         unique_answers.add(answer)
+print("Duplicate answers check complete.")
 
 # Log results
 if duplicate_questions:
@@ -57,3 +86,11 @@ if duplicate_answers:
         logging.info(answer)
 else:
     logging.info("No duplicate answers found.")
+
+# Close the logging system
+logging.shutdown()
+
+# Diagnostic message
+print("Logging complete. Please check 'json_duplicates.log' for details.")
+
+
