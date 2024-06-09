@@ -1,4 +1,4 @@
-= Chatbot Program
+= Chatbot Language Trainig Program
 
 This is a simple chatbot program written in Python. The chatbot is designed to interact with users, answer questions, and learn new responses based on user input. It includes features such as logging, knowledge base management, grammar and spell checking, and more.
 
