@@ -12,10 +12,9 @@
 * Integrated terminal output alongside log file.
 * Added functionality to clear the contents of a specified log file.
 
-== Version 0.1.0 (YYYY-MM-DD)
+== Version 0.1.0 (09-06-2024)
 
 * Initial version of the script.
-
 
 
 ---

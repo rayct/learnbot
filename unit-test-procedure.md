@@ -10,7 +10,7 @@
 
 #### 2. Test Configuration
 - Create a file named `knowledge_base.json` with initial test data:
-  ```json
+  ```jsona
   {
     "questions": [
       {
@@ -266,11 +266,6 @@ python -m unittest test_chatbot.py
 ```
 
 This will run all the defined test cases, and the logs generated during the test execution will be stored in `unit_test.log`. You can then open `unit_test.log` to review the detailed logs.
-
-
-
-
-
 
 
 ### Conclusion

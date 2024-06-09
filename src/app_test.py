@@ -1,6 +1,7 @@
 import json
 import logging
 import sys
+import pytz
 import spacy
 from typing import Optional, List, Dict, Any
 from datetime import datetime
@@ -11,8 +12,8 @@ nlp = spacy.load("en_core_web_md")
 
 class UKFormatter(logging.Formatter):
     def converter(self, timestamp):
-        dt = datetime.fromtimestamp(timestamp, tz=UTC)
-        return dt.astimezone(timezone('Europe/London'))
+        dt = datetime.fromtimestamp(timestamp, tz=pytz.UTC)
+        return dt.astimezone(pytz.timezone('Europe/London'))
 
     def formatTime(self, record, datefmt=None):
         dt = self.converter(record.created)
@@ -113,10 +114,6 @@ def chat_bot():
             user_input: str = get_user_input()
 
             if user_input.lower() == 'quit':
-                logging.info("Chatbot session ended by Ray.")
-                print('\nBot: Goodbye!')
-                break
-            elif user_input.lower() == 'exit':
                 logging.info("Chatbot session ended by Ray.")
                 print('\nBot: Goodbye!')
                 break

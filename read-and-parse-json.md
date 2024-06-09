@@ -179,11 +179,12 @@ python load_intents.py
 
 *Ensure you replace `'your_host'`, `'your_database'`, `'your_username'`, and `'your_password'` with your actual MySQL database credentials. This script will read the `intents.json` file, connect to your MySQL database, and insert each question and answer into the `questions` table.*
 
+
 ---
 
 **Documentation By:** Raymond C. Turner
 
-**Revision:** May 30th, 2024
+**Revision:** June 9th, 2024
 
 
 **codestak.io**

@@ -6,7 +6,7 @@ from io import StringIO
 import sys
 
 # Assume the chatbot code is in a module named chatbot
-import chatbot
+import source.chatbot as chatbot
 
 class TestChatBot(unittest.TestCase):
     def setUp(self):

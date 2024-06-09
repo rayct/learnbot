@@ -1,0 +1,188 @@
+== PIP Commands
+
+[source, sh]
+----
+pip install -r requirements.txt
+----
+
+[source, sh]
+----
+pip freeze > requirements.txt
+----
+---
+
+=== Using the `datetime` Module in Python
+
+==== In Python, the `datetime` module provides classes for manipulating dates and times. To format date and time objects into strings and parse strings back into date and time objects, you can use the `strftime` (string format time) and `strptime` (string parse time) methods, respectively. These methods use format codes to specify the desired format.
+
+Here's a quick reference for some common format codes:
+
+- `%Y` : Year with century (e.g., `2024`)
+- `%y` : Year without century, zero-padded (e.g., `24`)
+- `%m` : Month as a zero-padded decimal number (e.g., `01` for January)
+- `%d` : Day of the month as a zero-padded decimal number (e.g., `09`)
+- `%H` : Hour (24-hour clock) as a zero-padded decimal number (e.g., `14` for 2 PM)
+- `%I` : Hour (12-hour clock) as a zero-padded decimal number (e.g., `02` for 2 PM)
+- `%p` : AM or PM (e.g., `PM`)
+- `%M` : Minute as a zero-padded decimal number (e.g., `05`)
+- `%S` : Second as a zero-padded decimal number (e.g., `09`)
+- `%f` : Microsecond as a decimal number, zero-padded on the left (e.g., `000001`)
+- `%z` : UTC offset in the form `+HHMM` or `-HHMM` (empty string if the object is naive)
+- `%Z` : Time zone name (e.g., `UTC`, `EST`, empty string if the object is naive)
+- `%A` : Full weekday name (e.g., `Wednesday`)
+- `%a` : Abbreviated weekday name (e.g., `Wed`)
+- `%B` : Full month name (e.g., `January`)
+- `%b` : Abbreviated month name (e.g., `Jan`)
+- `%c` : Locale’s appropriate date and time representation (e.g., `Tue Aug 16 21:30:00 1988`)
+- `%x` : Locale’s appropriate date representation (e.g., `08/16/88`)
+- `%X` : Locale’s appropriate time representation (e.g., `21:30:00`)
+
+==== In Python, the `datetime` module provides classes for manipulating dates and times. To format date and time objects into strings and parse strings back into date and time objects, you can use the `strftime` (string format time) and `strptime` (string parse time) methods, respectively. These methods use format codes to specify the desired format.
+
+Here's a quick reference for some common format codes:
+
+- `%Y` : Year with century (e.g., `2024`)
+- `%y` : Year without century, zero-padded (e.g., `24`)
+- `%m` : Month as a zero-padded decimal number (e.g., `01` for January)
+- `%d` : Day of the month as a zero-padded decimal number (e.g., `09`)
+- `%H` : Hour (24-hour clock) as a zero-padded decimal number (e.g., `14` for 2 PM)
+- `%I` : Hour (12-hour clock) as a zero-padded decimal number (e.g., `02` for 2 PM)
+- `%p` : AM or PM (e.g., `PM`)
+- `%M` : Minute as a zero-padded decimal number (e.g., `05`)
+- `%S` : Second as a zero-padded decimal number (e.g., `09`)
+- `%f` : Microsecond as a decimal number, zero-padded on the left (e.g., `000001`)
+- `%z` : UTC offset in the form `+HHMM` or `-HHMM` (empty string if the object is naive)
+- `%Z` : Time zone name (e.g., `UTC`, `EST`, empty string if the object is naive)
+- `%A` : Full weekday name (e.g., `Wednesday`)
+- `%a` : Abbreviated weekday name (e.g., `Wed`)
+- `%B` : Full month name (e.g., `January`)
+- `%b` : Abbreviated month name (e.g., `Jan`)
+- `%c` : Locale’s appropriate date and time representation (e.g., `Tue Aug 16 21:30:00 1988`)
+- `%x` : Locale’s appropriate date representation (e.g., `08/16/88`)
+- `%X` : Locale’s appropriate time representation (e.g., `21:30:00`)
+
+=== Example Usage
+
+==== Formatting a `datetime` object into a string
+
+[source, python]
+---
+from datetime import datetime
+
+now = datetime.now()
+formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
+print(formatted_date)  # Output: 2024-05-30 14:35:22 (example)
+---
+
+==== Parsing a string into a `datetime` object
+
+[source, python]
+---
+
+import from datetime import datetime
+
+date_string = "2024-05-30 14:35:22"
+parsed_date = datetime.strptime(date_string, "%Y-%m-%d %H:%M:%S")
+print(parsed_date)  # Output: 2024-05-30 14:35:22
+---
+
+=== Custom Formatting Examples
+
+==== Custom date format
+
+[source, python]
+----
+formatted_date = now.strftime("%A, %B %d, %Y")
+print(formatted_date)  # Output: Thursday, May 30, 2024
+----
+
+==== Custom time format
+
+[source, python]
+----
+formatted_time = now.strftime("%I:%M %p")
+print(formatted_time)  # Output: 02:35 PM
+----
+
+_These examples demonstrate how you can control the format of date and time representations in your Python applications using the `strftime` and `strptime` methods._
+
+---
+
+To reverse the format from `%Y-%m-%d` (which represents `YYYY-MM-DD`) to `%d-%m-%Y` (which represents `DD-MM-YYYY`), you need to follow these steps:
+
+1. Parse the original string into a `datetime` object using `strptime`.
+2. Format the `datetime` object into the new desired string format using `strftime`.
+
+Here's a complete example in Python:
+
+[source, python]
+----
+from datetime import datetime
+
+# Original date string in YYYY-MM-DD format
+original_date_string = "2024-05-30"
+
+# Parse the original date string into a datetime object
+date_object = datetime.strptime(original_date_string, "%Y-%m-%d")
+
+# Format the datetime object into the new desired format (DD-MM-YYYY)
+new_date_string = date_object.strftime("%d-%m-%Y")
+
+print(new_date_string)  # Output: 30-05-2024
+----
+
+=== Explanation:
+
+1. **Parsing the String**: `datetime.strptime(original_date_string, "%Y-%m-%d")` converts the string `"2024-05-30"` into a `datetime` object.
+2. **Formatting the Datetime Object**: `date_object.strftime("%d-%m-%Y")` converts the `datetime` object back into a string in the new format, resulting in `"30-05-2024"`.
+
+This method can be adapted to reverse or change between any date formats as needed by adjusting the format strings in `strptime` and `strftime`.
+
+=== Mac OS CMDS
+
+==== Install Xcode Tools
+- sudo xcode-select --install
+
+To set the hostname on a Mac using the terminal, you can use the `scutil` command. Here’s the step-by-step process:
+
+1. Open the Terminal application.
+
+2. To set the hostname, you can use the following command:
+
+[source, sh]
+----
+sudo scutil --set HostName <new-hostname>
+----
+
+   Replace `<new-hostname>` with the desired hostname.
+
+- If you want to set the computer name (the name visible in Finder, for example) and the local hostname (the name used for Bonjour services), you can also set these:
+
+[source, sh]
+----
+sudo scutil --set ComputerName <new-computer-name>
+sudo scutil --set LocalHostName <new-local-hostname>
+----
+
+   Replace `<new-computer-name>` and `<new-local-hostname>` with the desired names.
+
+- To verify the changes, you can use the following commands:
+
+[source, sh]
+----
+scutil --get HostName
+scutil --get ComputerName
+scutil --get LocalHostName
+----
+
+Each command will return the corresponding name you’ve set.
+
+Remember to replace the placeholders with your actual desired names and note that `sudo` will prompt you for your password to make these changes.
+
+---
+
+**Documentation By:** Raymond C. Turner
+
+**Revision:** June 9th, 2024
+
+**codestak.io**
