@@ -1,16 +1,21 @@
-### Test Procedure for Chatbot Application
 
-#### 1. Environment Setup
+= Test Procedure for Chatbot Application
+
+== 1. Environment Setup
+
 - Ensure Python 3.x is installed on the system.
 - Install required dependencies:
-  ```sh
+  [source, bash]
+  ----
   pip install spacy pytz
   python -m spacy download en_core_web_md
-  ```
+  ----
 
-#### 2. Test Configuration
+== 2. Test Configuration
+
 - Create a file named `knowledge_base.json` with initial test data:
-  ```jsona
+  [source, json]
+  ----
   {
     "questions": [
       {
@@ -19,106 +24,120 @@
       }
     ]
   }
-  ```
+  ----
 - Ensure the script is saved as `chatbot.py`.
 
-#### 3. Test Cases
+== 3. Test Cases
 
-##### 3.1 Initialization and Logging
+=== 3.1 Initialization and Logging
 
 1. **Start the application:**
-   ```sh
+ 
+   [source, bash]
+   ----
    python chatbot.py
-   ```
+   ----
+
 2. **Verify logs:**
+  
    - Check `chatbot.log` for a successful start message:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - INFO - Knowledge base loaded successfully.
-     ```
+     ----
 
-##### 3.2 User Interaction
+=== 3.2 User Interaction
 
-3. **Normal Interaction:**
+1. **Normal Interaction:**
    - Input: `What are your contact details please`
    - Expected Output: `Bot: Our contact details are as follows...`
    - Verify logs:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - INFO - Best match for user input 'What are your contact details please' is 'What are your contact details please' with similarity 1.0.
      [timestamp] - INFO - Responding to question 'What are your contact details please' with answer 'Our contact details are as follows...'.
-     ```
+     ----
 
-4. **Unknown Question Handling:**
+2. **Unknown Question Handling:**
    - Input: `How do I reset my password?`
    - Expected Output: `Bot: Sorry, I don't know the answer. Can you please educate me?`
    - Input new answer: `You can reset your password by...`
    - Expected Output: `Bot: Thank you! I learned a new response!`
    - Verify `knowledge_base.json` is updated with the new Q&A.
    - Verify logs:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - WARNING - No match found for the user question 'How do I reset my password?'.
      [timestamp] - INFO - New answer added for question 'How do I reset my password?'.
-     ```
+     ----
 
-##### 3.3 Commands
+=== 3.3 Commands
 
 5. **Reload Command:**
    - Input: `reload`
    - Expected Output: `Bot: Knowledge base reloaded.`
    - Verify logs:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - INFO - Knowledge base reloaded by Ray.
-     ```
+     ----
 
 6. **Reboot Command:**
    - Input: `reboot`
    - Expected Output: `Bot: Rebooting...`
    - Verify logs:
-     ```
+
+     [source, plaintext]
+     ----
      [timestamp] - INFO - Chatbot reboot initiated by Ray.
      [timestamp] - INFO - Reboot process started.
      [timestamp] - INFO - Rebooting the chatbot program.
-     ```
+     ----
 
 7. **Quit Command:**
    - Input: `quit`
    - Expected Output: `Bot: Goodbye!`
    - Verify logs:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - INFO - Chatbot session ended by Ray.
-     ```
+     ----
 
-##### 3.4 Error Handling
+=== 3.4 Error Handling
 
 8. **File Not Found Error:**
    - Delete or rename `knowledge_base.json`.
    - Start the application.
    - Expected Output: `Bot: An unexpected error occurred. Please try again.`
    - Verify logs:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - ERROR - Knowledge base file 'knowledge_base.json' not found.
-     ```
+     ----
 
 9. **JSON Decode Error:**
    - Corrupt `knowledge_base.json` content.
    - Start the application.
    - Expected Output: `Bot: An unexpected error occurred. Please try again.`
    - Verify logs:
-     ```
+     [source, plaintext]
+     ----
      [timestamp] - ERROR - Error decoding JSON in file 'knowledge_base.json': [error details]
-     ```
+     ----
 
-##### 3.5 Unexpected Errors
+=== 3.5 Unexpected Errors
 
 10. **Simulate Unexpected Error:**
     - Modify the code to introduce an error (e.g., undefined variable).
     - Start the application.
     - Expected Output: `Bot: A critical error occurred. Exiting...`
     - Verify logs:
-      ```
+      [source, plaintext]
+      ----
       [timestamp] - CRITICAL - Critical error in main execution: [error details]
-      ```
+      ----
 
----
+== Full Test Code in `test_chatbot.py`
 
 Below is a full test code that automates the testing of the chatbot application. This test code uses the `unittest` framework and the `unittest.mock` module to simulate user inputs and outputs.
 
@@ -141,21 +160,23 @@ project_directory/
 - `chatbot.log`: The log file for general and reboot logs.
 - `unit_test.log`: The log file for capturing logs generated during unit tests.
 
-### Running the Tests
+=== Running the Tests
 
 To run the tests, navigate to the directory containing these files and execute the following command in your terminal or command prompt:
 
-```sh
+[source, bash]
+----
 python -m unittest test_chatbot.py
-```
+----
 
 This command will execute all the test cases defined in `test_chatbot.py` and generate logs in `unit_test.log`.
 
-### Full Test Code in `test_chatbot.py`
+=== Full Test Code in `test_chatbot.py`
 
 Here is the complete `test_chatbot.py` file content:
 
-```python
+[source, python]
+----
 import unittest
 from unittest.mock import patch, mock_open
 import json
@@ -221,7 +242,9 @@ class TestChatBot(unittest.TestCase):
     @patch('builtins.open', new_callable=mock_open, read_data=json.dumps(self.sample_knowledge_base))
     @patch('chatbot.sys.argv', ['chatbot.py'])
     def test_reboot_command(self, mock_open, mock_input, mock_argv):
-        with patch('chatbot.open', mock_open(read_data=open('chatbot.py').read())), patch('chatbot.exec') as mock_exec:
+        with patch('chat
+
+bot.open', mock_open(read_data=open('chatbot.py').read())), patch('chatbot.exec') as mock_exec:
             chatbot.chat_bot()
             output = self.log_stream.getvalue()
             self.assertIn("Chatbot reboot initiated by Ray.", output)
@@ -255,18 +278,18 @@ class TestChatBot(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-```
+----
 
-### Running the Tests
+=== Running the Tests
 
 Execute the test suite using the following command in your terminal or command prompt:
 
-```sh
+[source, bash]
+----
 python -m unittest test_chatbot.py
-```
+----
 
 This will run all the defined test cases, and the logs generated during the test execution will be stored in `unit_test.log`. You can then open `unit_test.log` to review the detailed logs.
 
-
-### Conclusion
+== Conclusion
 By following this test procedure, you can systematically verify the functionality, error handling, and logging of the chatbot application. Make sure to document the results for each test case to ensure the application meets the expected behavior.

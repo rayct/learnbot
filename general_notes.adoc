@@ -159,6 +159,7 @@ sudo scutil --set HostName <new-hostname>
 - If you want to set the computer name (the name visible in Finder, for example) and the local hostname (the name used for Bonjour services), you can also set these:
 
 [source, sh]
+
 ----
 sudo scutil --set ComputerName <new-computer-name>
 sudo scutil --set LocalHostName <new-local-hostname>
@@ -183,6 +184,6 @@ Remember to replace the placeholders with your actual desired names and note tha
 
 **Documentation By:** Raymond C. Turner
 
-**Revision:** June 9th, 2024
+**Revision:** June 10th, 2024
 
 **codestak.io**

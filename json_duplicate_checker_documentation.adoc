@@ -1,0 +1,228 @@
+
+= JSON Duplicate Checker Script
+
+This document provides a detailed explanation of each function and section of the Python program that checks for duplicate questions and answers in a JSON file.
+
+== Imports
+
+The script begins by importing necessary modules:
+
+[source, python]
+----
+import json
+import sys
+from language_tool_python import LanguageTool
+import enchant
+import os
+from datetime import datetime
+----
+
+* `json` - To handle JSON data.
+* `sys` - For system-specific parameters and functions.
+* `language_tool_python` - For grammar checking.
+* `enchant` - For spell checking.
+* `os` - For interacting with the operating system.
+* `datetime` - For handling date and time.
+
+== Function Definitions
+
+=== write_log Function
+
+This function writes log messages to a file with timestamps and line numbers. It also prints the messages to the terminal.
+
+[source, python]
+----
+def write_log(message, line_number=None):
+    log_file_path = 'json_duplicates.log'
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    with open(log_file_path, 'a') as log_file:
+        if line_number is not None:
+            log_file.write(f"{timestamp} - Line {line_number}: {message}\n")
+        else:
+            log_file.write(f"{timestamp} - {message}\n")
+    if line_number is not None:
+        print(f"{timestamp} - Line {line_number}: {message}")
+    else:
+        print(f"{timestamp} - {message}")
+----
+
+* `message` - The log message.
+* `line_number` - The line number associated with the log message (optional).
+
+The function performs the following actions:
+1. Opens the log file in append mode.
+2. Writes the log message to the file with a timestamp.
+3. Prints the log message to the terminal.
+
+== Main Script Execution
+
+The script performs several tasks to load JSON data, initialize tools, and check for duplicates.
+
+=== Script Start Logging
+
+Logs a message indicating the script start.
+
+[source, python]
+----
+write_log("Script started.")
+----
+
+=== Current Directory Path
+
+Gets the absolute path of the current directory.
+
+[source, python]
+----
+current_directory = os.path.abspath(os.path.dirname(__file__))
+----
+
+=== Load JSON Data
+
+Attempts to load the JSON data from a file named `knowledge_base.json`.
+
+[source, python]
+----
+try:
+    write_log("Loading JSON data...")
+    with open(os.path.join(current_directory, 'knowledge_base.json'), 'r') as file:
+        data = json.load(file)
+    write_log("JSON data loaded successfully.")
+except FileNotFoundError:
+    write_log("Error: File 'knowledge_base.json' not found. Please check the file path.")
+    print("Error: File 'knowledge_base.json' not found. Please check the file path.")
+    raise
+except json.JSONDecodeError as e:
+    write_log(f"Error decoding JSON: {e}")
+    print(f"Error decoding JSON: {e}")
+    raise
+----
+
+* Logs messages during the loading process.
+* Handles `FileNotFoundError` and `JSONDecodeError` exceptions.
+
+=== Initialize Language Tool
+
+Initializes the language tool for grammar checking.
+
+[source, python]
+----
+write_log("Initializing language tool...")
+tool = LanguageTool('en-US')
+write_log("Language tool initialized.")
+----
+
+=== Initialize Spell Checker
+
+Initializes the Enchant spell checker.
+
+[source, python]
+----
+write_log("Initializing spell checker...")
+spell_checker = enchant.Dict("en_US")
+write_log("Spell checker initialized.")
+----
+
+=== Extract Questions and Answers
+
+Extracts questions and answers from the JSON data.
+
+[source, python]
+----
+write_log("Extracting questions and answers...")
+questions = [item['question'] for item in data['questions']]
+answers = [item['answer'] for item in data['questions']]
+write_log("Questions and answers extracted successfully.")
+----
+
+=== Check for Duplicate Questions
+
+Checks for duplicate questions and logs potential grammar or spelling errors.
+
+[source, python]
+----
+write_log("Checking for duplicate questions...")
+unique_questions = set()
+duplicate_questions = set()
+
+for line_number, question in enumerate(questions, start=1):
+    matches = tool.check(question)
+    if matches or not spell_checker.check(question):
+        write_log(f"Potential error found in question: {question}", line_number)
+    if question in unique_questions:
+        duplicate_questions.add(question)
+    else:
+        unique_questions.add(question)
+write_log("Duplicate questions check complete.")
+----
+
+* Uses a set to track unique questions.
+* Logs potential grammar or spelling errors.
+* Adds duplicates to a set of duplicate questions.
+
+=== Check for Duplicate Answers
+
+Checks for duplicate answers.
+
+[source, python]
+----
+write_log("Checking for duplicate answers...")
+unique_answers = set()
+duplicate_answers = set()
+
+for line_number, answer in enumerate(answers, start=1):
+    if answer in unique_answers:
+        duplicate_answers.add(answer)
+    else:
+        unique_answers.add(answer)
+write_log("Duplicate answers check complete.")
+----
+
+* Uses a set to track unique answers.
+* Adds duplicates to a set of duplicate answers.
+
+=== Log Results
+
+Logs the results of the duplicate checks.
+
+[source, python]
+----
+if duplicate_questions:
+    write_log("Duplicate questions found:")
+    for question in duplicate_questions:
+        write_log(question)
+else:
+    write_log("No duplicate questions found.")
+
+if duplicate_answers:
+    write_log("Duplicate answers found:")
+    for answer in duplicate_answers:
+        write_log(answer)
+else:
+    write_log("No duplicate answers found.")
+----
+
+=== Script Completion Logging
+
+Logs a message indicating the script end.
+
+[source, python]
+----
+write_log("Script completed.")
+----
+
+=== Diagnostic Message
+
+Prints a diagnostic message to the terminal.
+
+[source, python]
+----
+print("Logging complete. Please check 'json_duplicates.log' for details.")
+----
+
+---
+
+**Documentation By:** Raymond C. Turner
+
+**Revision:** June 10th, 2024
+
+**codestak.io**
